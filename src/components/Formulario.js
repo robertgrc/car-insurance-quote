@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import {obtenerDiferenciaYear} from '../helper';
 
 const Error = styled.div`
     background-color: red;
@@ -88,11 +89,22 @@ const cotizarSeguro = e =>{
     }
     guardarError(false);
 
+    //Una base de 2000 para el seguro
+    let resultado = 2000;
+
     //obtener la diferencia de años
 
-    //por cada año hay que restar el 3%
+    const diferencia = obtenerDiferenciaYear(year)
+    console.log(diferencia);
 
-    //Americano 15
+    //por cada año hay que restar el 3% de la base(2000)
+    //resta el 3 porciento cada year
+    resultado -= ((diferencia * 3 )*resultado)/100;
+    console.log(resultado);
+
+    //el precio incrementa segun si es americano asiatico o europeo
+
+    //Americano 15%
     //Asiatico 5%
     //Europeo 30%
 
