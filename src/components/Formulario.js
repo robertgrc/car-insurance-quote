@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import {obtenerDiferenciaYear} from '../helper';
+import {obtenerDiferenciaYear,calcularMarca, obtenerPlan} from '../helper';
 
 const Error = styled.div`
     background-color: red;
@@ -107,10 +107,13 @@ const cotizarSeguro = e =>{
     //Americano 15%
     //Asiatico 5%
     //Europeo 30%
-
+    resultado = calcularMarca(marca)*resultado;
+    console.log(resultado);
     //Basico aumenta 20%
     //Completo 50%
-
+    const incrementoPlan = obtenerPlan(plan);
+    resultado = parseFloat( incrementoPlan * resultado ).toFixed(2);
+    console.log(resultado);
     //Total
 }
 
