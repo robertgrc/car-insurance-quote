@@ -55,7 +55,7 @@ const Boton = styled.button`
 
 
 
-const Formulario = () => {
+const Formulario = ({guardarResumen}) => {
 
 
 const [datos, guardarDatos] = useState({
@@ -115,6 +115,10 @@ const cotizarSeguro = e =>{
     resultado = parseFloat( incrementoPlan * resultado ).toFixed(2);
     console.log(resultado);
     //Total
+    guardarResumen({
+        cotizacion: resultado,
+        datos
+    })
 }
 
     return (  
@@ -143,6 +147,7 @@ const cotizarSeguro = e =>{
                   value={year}
                   onChange={obtenerInformacion}
                 >
+                        <option value="2022">2022</option>               
                         <option value="2021">2021</option>               
                         <option value="2020">2020</option>
                         <option value="2019">2019</option>
